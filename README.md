@@ -1,4 +1,4 @@
-# Text-Message-Story-Game (JavaScript)
+# Text-Message-Story-Game
 Dynamic Click through story game on a simulated phone 
 
 The main focus of this game is to have a click through story where one is in a text message conversation where they can select responces from a list. Depending on the option choosed the story will progress in diffrent ways.
@@ -14,3 +14,4 @@ Additional functionality
     -user can cycle though diffrent cities' weather information 
     
     
+Made in JavaScript
