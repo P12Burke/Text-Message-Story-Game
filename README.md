@@ -12,3 +12,6 @@ Additional functionality
     
  -Weather App
     -user can cycle though diffrent cities' weather information 
+    
+    
+Made in JavaScript
