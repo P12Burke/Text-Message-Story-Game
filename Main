@@ -1,0 +1,2003 @@
+//variable and function defining 
+
+        var f1 = createFont("Helvetica Ultra Light ", 28);
+         var f2 =createFont("Old English Text Mt");
+        var f3 =createFont("Elephant");
+        var f4 =createFont("Lucida Console");
+            textFont(f1, 13);
+            background(122, 122, 122);
+            noStroke();
+        //where program is
+            var screenStage=1;
+            var shiftY= 412;//shift key in nots app
+            var keyboardCode=0;
+        //location of cursor in notes app    
+            var cursorX=199;
+            var cursorY=116;
+            
+        //instructions
+            var MasterInstructions=function(){
+                background(122,122,122);
+                noStroke();
+                var f1 = createFont("Helvetica Ultra Light ", 28);
+                textFont(f1,23);
+
+                fill(255, 255, 255);
+                text("Instructions",22,36);
+                textFont(f1,13);
+                text("-Click on app icons when on the homescreen to enter into the app then click the home buttom to get back to the home screen(a sound effect will be played when hom button is pressed)",20,78,300,600);
+                text("-Instructions for the apps are found within each app(exept notes/compas/weather)",16,156,300,500);
+                textFont(f1,20);
+                text("Known Issues",20,234);
+                textFont(f1,13);
+                text("-message spacing can be odd",16,252);
+                text("-backspce in notes may cut off some characters      -return button does not work",16,257,300,300);
+                text("-when exiting and re-entering an app past progress made in the app is not shown",16,288,300,300);
+                text("-Clock and compass have no functionality",16,318,300,300);
+                textFont(f1,33);
+                fill(212, 212, 212);
+                text("The Phone-y Phonetastical             Phoney Phone Project",89,443,500,97);
+                fill(77, 77, 77);
+                rect(16,337,161,42);
+
+
+fill(186, 186, 186);
+textFont(f1,24);
+text("Click to Start",28,363);
+};
+           
+        //phone
+                //black part of phone body
+                var phoneBody=function(x,y){  
+                //body
+                    fill(26, 26, 26);
+                    rect(173+x,5+y,245,521,30);
+                    
+                //side buttons
+                    noStroke();
+                    rect(170+x,85+y,5,32,2);
+                    rect(170+x,140+y,5,20,2);
+                    rect(170+x,174+y,5,20,2);
+                    rect(350+x,3+y,33,5,2);
+                    
+                 //earpeace
+                    fill(56, 56, 56);
+                    rect(277+x,41+y,45,10,40);
+                    fill(117, 117, 117);
+                    rect(280+x,43+y,38,6,63);
+                    
+                //camera
+                    fill(49, 53, 71);
+                    ellipse(300+x,26+y,10,10);
+                    
+                
+                //home button 
+                    fill(46, 46, 46);
+                    ellipse(300+x,499+y,43,43);
+                        //square
+                        fill(204, 200, 204);
+                        rect(287+x,486+y,26,26,5);
+                        fill(46, 45, 46);
+                        rect(290+x,489+y,20,20,1);
+             };  
+             
+                //bell/battery bar
+                var topBar=function(r,g,b){
+                                fill(r, g, b);
+                                ellipse(191,75,5,5);
+                                ellipse(198,75,5,5);
+                                ellipse(205,75,5,5);
+                                ellipse(212,75,5,5);
+                                textFont(f1,12);
+                                text("AT&T  LTE",218,79);
+                           
+                                //time
+                                text("9:41",286,79);
+                                
+                                //battery
+                                text("94%",360,79);
+                                rect(388,71,15,8,1);
+                                rect(402,73,3,4);
+                            }; 
+                
+                var homeScreen=function(){
+            
+            var f1 = createFont("Helvetica Ultra Light ", 28);
+                    textFont(f1, 10.5);     
+                    
+                    noStroke();
+                    strokeWeight(1);
+                    fill(41, 120, 148);
+                    rect(183,68,225,400);
+                    fill(72, 208, 242);
+                    quad(408,105,408,224,183,342,183,222);
+                    fill(64, 54, 54);
+                    quad(408,224,408,274,183,396,183,341);
+                    quad(366,68,407,108,183,222,183,166);
+                        rect(366,68,42,40);
+                    
+                    var yAppPos=91;
+                    var appDim=41;
+                //messages
+                    fill(30, 219, 13);
+                    rect(200, yAppPos,appDim,appDim,5);
+                    fill(255, 255, 255);
+                    ellipse(221,112,33,24);
+                    triangle(208,125,219,118,209,116);
+                    
+                //weather
+                    var yAppPos=91;
+                    var appDim=41;
+                    noStroke();
+        
+                    fill(54, 161, 232);
+                    rect(200, yAppPos+65,appDim,appDim,5);
+                    
+                    fill(255, 248, 173);
+                    triangle(220,165,210,176,210,165);
+                    fill(242, 216, 164);
+                    triangle(232,165,232,176,225,165);
+                    fill(227, 204, 53);
+                    triangle(220,187,210,187,210,178);
+                    fill(163, 149, 57);
+                    triangle(232,187,232,175,222,187);
+                    fill(255, 209, 92);
+                    triangle(205,176,213,167,216,187);
+                    fill(255, 209, 92);
+                    triangle(215,166,227,166,221,160);
+                    fill(207, 151, 39);
+                    triangle(237,176,228,167,225,187);
+                    fill(240, 182, 67);
+                    triangle(215,186,227,186,221,192);
+                    
+                    fill(255, 226, 153);
+                    ellipse(221,176,24,24);
+        
+                //notes
+                    fill(255, 255, 255);
+                    rect(200, yAppPos+127,appDim,appDim,5);
+                    stroke(150, 150, 150);
+                    line(200,253,240,253);
+                    line(200,247,241,247);
+                    line(200,240,241,240);
+                    line(200,234,241,234);
+                    line(200,228,241,228);
+                    noStroke();
+                    fill(255, 204, 0);
+                    rect(200,218,appDim,10,5);
+                    rect(200,220,appDim,8);
+                //news stand
+                    
+                    fill(255, 255, 255);
+                    rect(200, yAppPos+191,appDim,appDim,5);
+                    fill(194, 194, 194);
+                        //newspaper
+                        rect(207,284,20,25);
+                        textFont(f2,7.4);
+                        fill(120, 120, 120);
+                        text("News",207.5,291);
+                        
+                        //art
+                        textFont(f3,6);
+                        fill(255, 209, 23);
+                        rect(204,300,15,18);
+                        fill(250, 40, 40);
+                        rect(206,312,5,5);
+                        fill(0, 136, 255);
+                        ellipse(212,308,5,5);
+                        fill(115, 115, 115);
+                        text("Art",205,305);
+                        
+                        //Travel
+                        
+                        fill(0, 122, 252);
+                        rect(214,297,16,21);
+                        fill(59, 226, 255);
+                        triangle(223,307,214,318,231,318);
+                        fill(87, 87, 87);
+                        textFont(f3,5);
+                        text("Travel",214,301);
+                        
+                        //sports
+                        fill(0, 255, 17);
+                        rect(226,303,13,15);
+                        stroke(255, 255, 255);
+                        line(227,318,229,311);
+                        line(239,319,236,311);
+                        line(229,311,236,311);
+                        line(228,314,237,314);
+                        fill(158, 158, 158);
+                        textFont(f3,4);
+                        text("Sports",226,307);
+                        noStroke();
+                        textFont(f1,10.5);
+                
+                //compass
+                    fill(0, 0, 0);
+                    rect(200, yAppPos+255,appDim,appDim,5);
+                        noStroke();
+                    fill(0, 0, 0);
+                    rect(200, yAppPos+255,appDim,appDim,5);
+                    stroke(209, 205, 209);
+                    ellipse(220,367,34,34);
+                    noStroke();
+                    fill(33, 33, 33);
+                    ellipse(220,367,16,16);
+                    stroke(189, 189, 189);
+                    line(220,359,220,374);
+                    line(228,366,212,366);
+                    stroke(171, 171, 171);
+                    line(220,348,220,352);
+                    line(220,386,220,382);
+                    line(201,366,205,366);
+                    line(239,366,235,366);
+                    fill(232, 232, 232);
+                    textFont(f1,5);
+                    text("N",227,359);
+                    text("W",210,359);
+                    text("S",210,377); 
+                    text("E",227,377);
+                    fill(191, 21, 21);
+                    noStroke();
+                    triangle(238,350,232,350,238,356);
+                    textFont(f1,10.5);
+                //paint
+                    fill(49, 224, 125,200);
+                    rect(256,yAppPos,appDim,appDim,5);
+                    fill(240, 240, 240);
+                    ellipse(276.5,112,35,35);
+                    fill(49, 224, 125,200);
+                    ellipse(276.5,112,30,30);
+                    fill(255, 255, 255);
+                    pushMatrix();
+                    rotate(40);
+                    translate(8,-204);
+                    rect(273,106,5,13,1);
+                    rect(273,100,5,5,1);
+                    triangle(275,126,278,120,273,120);
+                    popMatrix();
+                //clock
+                    fill(0);
+                    rect(256, yAppPos+65,appDim,appDim,5);
+                    fill(255,255,255);
+                    ellipse(276,yAppPos+86,34,34);
+                    fill(0);
+                    textSize(5);
+                    text("12",273,yAppPos+76);
+                    text("1",282,yAppPos+78);
+                    text("2",286,yAppPos+81);
+                    text("3",287,yAppPos+88);
+                    text("4",286,yAppPos+95);
+                    text("5",282,yAppPos+100);
+                    text("6",275,yAppPos+101);
+                    text("7",269,yAppPos+100);
+                    text("8",262,yAppPos+95);
+                    text("9",260,yAppPos+88);
+                    text("10",261,yAppPos+83);
+                    text("11",265,yAppPos+77);
+                    ellipse(276,yAppPos+86,2,2);
+                    stroke(0);
+                    line(276,yAppPos+86,285,yAppPos+84);
+                    line(276,yAppPos+86,289,yAppPos+93);
+                    stroke(255, 0, 0);
+                    line(276,yAppPos+86,262,yAppPos+84);
+                    noStroke();
+
+                //dock
+                    fill(115, 115, 115);
+                    rect(183,406,225,62);
+                    textFont(f1,10);
+            //lables
+                    fill(237, 237, 237);
+                    text("Messages",196,145);
+                    text("Weather",198,208);
+                    text("Notes",205,271);
+                    text("Newsstand",192,335);
+                    text("Compass",198,399);
+                    text("Paint",264,145);
+                    text("Clock",264,208);
+                screenStage=2;
+                    
+            topBar(255,255,255);
+            }; 
+            
+                //starting screen 
+                var phoneStartScreen=function(){
+                    background(122, 122, 122);
+                    phoneBody(0,0);
+                    homeScreen();
+                    
+            };
+            
+        //message app 
+                var messageCase=1;
+                var optionState=0;
+                var messageInstructions=false;
+           //ellements on screen     
+            var messageScreen=function(){
+                
+                    //screen for messages
+                      //screen
+                      noStroke();
+                        fill(247, 247, 247);
+                        rect(274,101,225,397);
+                        
+                        //bottominfo
+                        fill(227, 227, 227);
+                        rect(274,465,225,33);
+                        stroke(191, 187, 191);
+                        strokeWeight(1);
+                        line(273,464,498,464);
+                        noStroke();
+                        
+                        //top info 
+                            rect(274,99,225,46);
+                            stroke(191, 187, 191);
+                            strokeWeight(1);
+                            line(274,143,495,143);
+                            noStroke();
+                                //name
+                                    fill(0, 0, 0);
+                                    textFont(f1,18);
+                                    text("Name",368,131);
+                                //contacts 
+                                    fill(0, 89, 255);
+                                    textFont(f1,14);
+                                    text("Contact",442,129);
+                                //messages
+                                    text("Inctructions",294,129);
+                                        pushMatrix();
+                                        rotate(45);
+                                        rect(287,-112,13,3);
+                                        rotate(90);
+                                        rect(-125,-288,16,3);
+                                        popMatrix();
+                
+                                
+                        //text message
+                            textFont(f1, 13);
+                            fill(245, 245, 245);
+                            stroke(191, 187, 191);
+                            rect(306,473,151,20,2);
+                            fill(130, 127, 127);
+                            text("Text Message",317,488);
+                            
+                        //Send
+                            textFont(f1, 15);
+                            fill(64, 64, 64);
+                            text("Send",463,488);
+                            
+                        //camera icon 
+                                noStroke();
+                                fill(105, 105, 105);
+                                rect(283,479,15,10,2);
+                                rect(285,447,1,1,3);
+                                quad(296,482,287,480,289,475,294,474);
+                                fill(224, 224, 224);
+                                ellipse(291,484,6,6);
+                    
+            
+                        };
+            var messageScreenRAW=function(){
+                //bottominfo
+                        fill(227, 227, 227,230);
+                        rect(274,465,225,33);
+                        stroke(191, 187, 191);
+                        strokeWeight(1);
+                        line(273,464,498,464);
+                        noStroke();
+                        
+                        //top info 
+                            rect(274,99,225,46);
+                            stroke(191, 187, 191);
+                            strokeWeight(1);
+                            line(274,143,495,143);
+                            noStroke();
+                                //name
+                                    fill(0, 0, 0);
+                                    textFont(f1,18);
+                                    text("Brother",368,131);
+                                //contacts 
+                                    fill(0, 89, 255);
+                                    textFont(f1,14);
+                                    text("Contact",442,129);
+                                //messages
+                                    text("Instructions",294,129);
+                                        pushMatrix();
+                                        rotate(45);
+                                        rect(287,-112,13,3);
+                                        rotate(90);
+                                        rect(-125,-288,16,3);
+                                        popMatrix();
+                
+                                
+                        //text message
+                            textFont(f1, 13);
+                            fill(245, 245, 245);
+                            stroke(191, 187, 191);
+                            rect(306,473,151,20,2);
+                            fill(130, 127, 127);
+                            text("Text Message",317,488);
+                            
+                        //Send
+                            textFont(f1, 15);
+                            fill(64, 64, 64);
+                            text("Send",463,488);
+                            
+                        //camera icon 
+                                noStroke();
+                                fill(105, 105, 105);
+                                rect(283,479,15,10,2);
+                                rect(285,447,1,1,3);
+                                quad(296,482,287,480,289,475,294,474);
+                                fill(224, 224, 224);
+                                ellipse(291,484,6,6);
+            };
+            
+            //instructions for messages
+            var messageInstructions=function(){
+                noStroke();
+                textFont(f1, 18);
+                fill(189, 189, 189);
+                rect(274,101,225,397);
+                fill(0, 0, 0);
+                text("Text RPG",340,137);
+                textFont(f1,13);
+                text("-Pick a message from the side bar and click on it. the message along with the responce will be shown on the phone screen",291,166,200,69);
+                text("-To move along the coversation in the phone simply navigate with the up and down arrow keys(to stop navigation press the Right arrow Key",291,245,200,88);
+                fill(255, 0, 0);
+                textFont(f1,20);
+                text("X",474,122);
+                textFont(f1,13);
+            };
+            
+            //three bars on message screen
+            var screenDivider=function(){
+                stroke(71, 71, 71);
+                strokeWeight(4);
+                line(10,200,250,200);
+                line(10,400,250,400);
+                noStroke();
+            };
+            
+                messageScreen();
+            //keeping track of mesages selected    
+                var case1=false;
+                var case2=false;
+                var case3=false;
+                var case4=false;
+                var case5=false;
+                var case6=false;
+                var case7=false;
+                var case8=false;
+                var case9=false;
+                var case10=false;
+                var case11=false;
+                
+                //variables for option T or F
+                    var option1=false;
+                    var option2=false;
+                    var option3=false;
+                //message heigt
+                    var messageHeight=310;
+            //bubble templates
+                var messageBubble=function(x,y,w,h,message){
+                            fill(64, 166, 83);
+                            rect(x,y,w,h*13.5,20);            
+                            triangle(x+w+12,y+(h*13)+6,x+w+-32,y+(h*13)+0,x+w+-5,y+(h*13)+-13);
+                            textLeading(15);
+                            fill(255, 255, 255);
+                            text(message,x+8,y+10,140,148);
+                        };
+                        
+                var replyBubble=function(y,w,h,message){
+                            fill(232, 232, 232);
+                            rect(285,y,w,h*13.5,20);            
+                            triangle(322,y+(h*13),276,y+(h*13)+12,293,y+(h*13)+-13);
+                            textLeading(15);
+                            fill(0, 0, 0);
+                            text(message,296,y+12,140,148);
+                        };
+                        
+            //reset after each message
+                var reset=function(){
+                    option1=false;
+                    option2=false;
+                    option3=false;
+                    //cover options
+                        fill(122, 122, 122);
+                        rect(0,0,260,195);
+                        rect(0,205,260,190);
+                        rect(0,405,260,190);
+                };
+             
+            //where messages are stored.  num1/2=y offset for messages(messageheight)
+            var block1=function(){
+            messageBubble(327,messageHeight,153,3.3,"where are you? Are you okay?");
+            replyBubble(messageHeight+55,137,5.6,"Chil! yeah I'm fine dont't worry. I just missed my plane, sorry.");
+        };
+        
+            var block2=function(num1,num2){
+                messageBubble(385,messageHeight+num1,94,2.2,"thank God!!!");
+                        replyBubble(messageHeight+num2,146,5.7,"Okay... aren't you mad that i misssed the flight cuz you paid for it?");
+            };
+            
+            var block3=function(num1,num2){
+                messageBubble(345,messageHeight+num1,133,3.3,"I was so worried about you!");
+                replyBubble(messageHeight+num2,146,5.7,"Okay... aren't you mad that i misssed the flight cuz you paid for it?");
+            };
+            
+            var block4=function(num1,num2){
+                messageBubble(367,messageHeight+num1,116,3.4,"You are really okay?!?");
+                replyBubble(messageHeight+num2,156,4.0,"yeah i'm good. why are you so worried?");
+            };
+            
+            var block5=function(num1,num2){
+                messageBubble(337,messageHeight+num1,148,6.9,"Do you live under a rock? the plane you were supposed to be on was hijacked and crashed");
+                replyBubble(messageHeight+num2,144,5.7,"WHAT NO WAY. Sorry I have to go, talk to you later. Work Calls");
+            };
+            
+            var block6=function(num1,num2){
+                messageBubble(331,messageHeight+num1,148,10.1,"Look I get that you are a reporter and all, having to be super flexable. BUT SERIOUSLY NOW? LET SOMEONE ELSE DO YOUR JOB RIGHT NOW!");
+            replyBubble(messageHeight+num2,151,9.2,"Look I'm sorry. But this is really imprtant. news i have to investigate. I'll probobly be away the rest of the month.");
+
+            };
+            
+            var block7=function(num1,num2){
+                 messageBubble(337,messageHeight+num1,147,5.7,"You should at least give Mom and Dad a phone call they are worried sick");
+            replyBubble(messageHeight+num2,151,9.2,"Look I'm sorry. But this is really imprtant news i have to investigate. I'll probobly be away the rest of the month.");
+            };
+            
+            var block8=function(num1,num2){
+                messageBubble(339,messageHeight+num1,147,6.8,"You have to be joking. Get home now or im going to sell all your stuff on Craigslist");
+            replyBubble(messageHeight+num2,154,10.1,"Look I'm not in the mood but i'm sorry. This is really imprtant news i have to investigate. I'll probobly be away the rest of the month.");
+            };
+            
+            var block9=function(num1,num2){
+                messageBubble(337,messageHeight+num1,147,9.0,"We are all tired of you always being at work, we haven't even seen you since you got that reporter job over a year ago");
+            replyBubble(messageHeight+num2,148,9.7,"well i'm tring to get a promotion right now. You should know out of anyone. When i want something i'll somehow get it");
+            };
+            
+            var block10=function(num1,num2){
+                messageBubble(325,messageHeight+num1,156,11.3,"It's this kind  of behaviour that has followed you your entire life. improving yourself with no regard for others.YOUR OWN FATHER IS DYING AND YOU WON'T EVEN VISIT HIM");
+            replyBubble(messageHeight+num2,148,10.0,"How dare you say that to me, you know what go away i don;t want to talk to you ever again. I don't want to see you ever again. BYE.");  
+            };
+            
+            var block11=function(num1,num2){
+                messageBubble(330,messageHeight+num1,156,11.3,"But with dad almost on his death-bed you need to move here with mom, since i have to go to uni in the fall and mom is going to be broken once dad dies, please.");
+            replyBubble(messageHeight+num2,148,8.0,"i didn't know dad was that close. i'll ask my boss for a transfer tomorrow and rent my house out here");
+            };
+                    
+        //paint App
+                var Screen=1;//which stage of app
+                var Shape=ellipse;//set drawing tool as circles
+                
+                var instructions=function(){//art app instructions
+                    textSize(18);
+                    fill(0, 0, 0);
+                    text("Doodle Board",238,106);
+                    textSize(14.8);
+                    text("•	Press and move the mouse to",188,159);
+                    text("draw",199,179);
+                    text("•	Click the colour you want to",188,202);
+                    text("draw with from the colour panel",199,222);
+                    text("at the top of the screen",199,241);
+                    text("•	Click the “Random” button at the",185,264);
+                    text("bottom right corner of the ",196,284);
+                    text("screen to draw with a random",196,304);
+                    text("colour",196,324);
+                    text("•	Click the shape you want to use ",185,346);
+                    text("from the panel at the bottom of ",196,366);
+                    text("the screen",196,386);
+                    text("•	To restart your drawing, click the ",185,408);
+                    text("“Clear” button at the bottom left ",196,426);
+                    text("corner of the screen",196,445);
+        
+                //Symbol to exit instructions
+                    stroke(0, 0, 0);
+                    fill(255, 255, 255);
+                    rect(388,119,14,14);
+                    line(390,131,400,121);
+                    line(391,122,400,131);
+                };//end of instructions function
+                
+                var colourSet=function(){//colour panel
+                noStroke();
+                fill(255, 0, 0);
+                rect(183,68,28,15);//red option
+                fill(255, 140, 0);
+                rect(211,68,28,15);//orange option
+                fill(255, 242, 0);
+                rect(239,68,28,15);//yellow option
+                fill(94, 255, 0);
+                rect(267,68,28,15);//green option
+                fill(0, 174, 255);
+                rect(295,68,28,15);//blue option
+                fill(140, 0, 255);
+                rect(323,68,28,15);//purple option
+                fill(255, 173, 200);
+                rect(351,68,29,15);//pink option
+                fill(0, 0, 0);
+                rect(379,68,29,15);//black option
+            
+                fill(255, 255, 255);//change fill to white
+                stroke(148, 148, 148);//change stroke to gray
+            
+            //buttons for shape panel
+                rect(182,447,38,20);
+                rect(220,447,24,20);
+                rect(244,447,20,20);
+                rect(264,447,36,20);
+                rect(300,447,20,20);
+                rect(320,447,20,20);
+                rect(340,447,16,20);
+                rect(356,447,51,20);
+                fill(0, 0, 0);//fill black
+                textSize(13);
+                text("Clear",187,461);
+                text("Random",358,462);
+                triangle(225,465,241,465,232,451);//triangle option
+                rect(247,451,14,14);//square option
+                quad(270,497+-33,276,482-30,290,482-30,298,497-33);//trapezoid option
+                ellipse(312,459,14,14);//circle option
+                textSize(24);
+                text("♥",325,467);//heart option
+                textSize(19);
+                text("?",343,466);//instructions button
+            };//end of colourSet function
+            
+            
+        //notes app
+                var keyboard1=function(){
+                    noStroke();
+                        fill(214, 214, 214);
+                        rect(183,317,224,149);
+                        fill(252, 252, 252);
+                        
+                        //top row
+                        for(var i=187;i<394;i+=22){
+                            rect(i,324,17,31,3);
+                        }
+                        var firstRowKeys= ["q","w"," e","  r","  t","   y","   u","    i","    o","     p"];
+                            for(var i=0; i< firstRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                textFont(f1,15);
+                                text(firstRowKeys[i],(19.9*i)+191,343); 
+                        }
+                        
+                        //second row
+                        fill(255, 255, 255);
+                        for(var i=194;i<389;i+=23){
+                            rect(i,361,18,31,3);
+                        }
+                        var secnRowKeys= ["a","s","d","f","g","h","j","k"," l"];
+                            for(var i=0; i<secnRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                text(secnRowKeys[i],(22.6*i)+199,381); 
+                            }
+                            
+                        //third row
+                        fill(255, 255, 255);
+                        for(var i = 217; i<375;i+=23.0){
+                            rect(i,398,18,31,4); 
+                        }
+                        var thirdRowKeys= ["z","x","c","v","b","n","m"];
+                            for(var i=0; i<thirdRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                text(thirdRowKeys[i],(22.6*i)+221,417); 
+                            }
+                        //spacebar
+                        fill(255, 255, 255);
+                        rect(239,435,112,27,4);
+                        fill(0, 0, 0);
+                        text("space",275,451);
+                        
+                        //shift/backspace
+                        fill(168, 168, 168);
+                        rect(187,399,24,30,4);
+                        rect(379,399,24,30,4);
+                        stroke(0, 0, 0);
+                            //shift
+                            line(203,shiftY+10,194,shiftY+10);
+                            line(194,shiftY,194,shiftY+10);
+                            line(203,shiftY,203,shiftY+10);
+                            line(208,shiftY+1,203,shiftY+1);
+                            line(189,shiftY+1,194,shiftY+1);
+                            line(189,shiftY+1,199,shiftY-8);
+                            line(208,shiftY+1,198,shiftY-8);
+                            //backspace
+                            line(399,410,389,410);
+                            line(399,420,389,420);
+                            line(399,420,399,410);
+                            line(383,415,389,420);
+                            line(383,415,389,410);
+                            textFont(f1,9);
+                            fill(0, 0, 0);
+                            text("X",389,418.3);
+                        noStroke();
+                        //123/return
+                        fill(168, 168, 168);
+                        rect(188,435,44,27,4);
+                        rect(358,435,44,27,4);
+                        fill(0, 0, 0);
+                        textFont(f1,13);
+                        text("123",198,453);
+                        text("return",363,452);
+                        
+                    keyboardCode=1;
+                        
+                    };//lowercase
+                    
+                var keyboard2=function(){
+                        fill(214, 214, 214);
+                        rect(183,317,224,149);
+                        fill(252, 252, 252);
+                        for(var i=187;i<394;i+=22){
+                            rect(i,324,17,31,3);
+                         }
+                        for(var i=187;i<394;i+=22){
+                            rect(i,364,17,31,3);
+                         }
+                        for(var i=214;i<374;i+=33){
+                            rect(i,402,28,27,3);
+                         }
+                        //spacebar
+                        rect(239,435,112,27,4);
+                        
+                        //ABC/return
+                        fill(168, 168, 168);
+                        rect(188,435,44,27,4);
+                        rect(358,435,44,27,4);
+                        
+                        //drawing charachters
+                        var firstRowKeys= ["1"," 2"," 3","  4","  5","   6","    7","    8","     9","      0"];
+                            for(var i=0; i< firstRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                textFont(f1,15);
+                                text(firstRowKeys[i],(19.4*i)+191,345); 
+                        }
+                        var secnRowKeys= ["-","/",":",";","("," )"," $"," &"," @",'   "'];
+                            for(var i=0; i<secnRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                text(secnRowKeys[i],(20.8*i)+194,383); 
+                            }
+                            
+                        var thirdRowKeys= [".",",","?","!","'"];
+                            for(var i=0; i<thirdRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                text(thirdRowKeys[i],(32.8*i)+226,419); 
+                            }
+                        text("space",275,453);
+                        text("ABC",365,453);
+                        text("Done",191,453);
+                    //backspace
+                        //backspace
+                        fill(168, 168, 168);
+                        rect(187,399,24,30,4);
+                        rect(379,399,24,30,4);
+                        stroke(0, 0, 0);
+                            //backspace
+                            line(399,410,389,410);
+                            line(399,420,389,420);
+                            line(399,420,399,410);
+                            line(383,415,389,420);
+                            line(383,415,389,410);
+                            textFont(f1,9);
+                            fill(0, 0, 0);
+                            text("X",389,418.5);
+                        //next Keyboard
+                            textFont(f1,16);
+                            text(":)",194,418);
+                    keyboardCode=2;
+                    };//numeric
+                    
+                var keyboard3=function(){
+                    noStroke();
+                        fill(214, 214, 214);
+                        rect(183,317,224,149);
+                        fill(252, 252, 252);
+                        
+                        //top row
+                        for(var i=187;i<394;i+=22){
+                            rect(i,324,17,31,3);
+                        }
+                        var firstRowKeys= ["Q","W"," E"," R","  T","  Y","   U","    I","    O","     P"];
+                            for(var i=0; i< firstRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                textFont(f1,15);
+                                text(firstRowKeys[i],(19.9*i)+191,345); 
+                        }
+                        
+                        //second row
+                        fill(255, 255, 255);
+                        for(var i=194;i<389;i+=23){
+                            rect(i,361,18,31,3);
+                        }
+                        var secnRowKeys= ["A","S","D","F","G","H","J","K","L"];
+                            for(var i=0; i<secnRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                text(secnRowKeys[i],(22.6*i)+199,381); 
+                            }
+                            
+                        //third row
+                        fill(255, 255, 255);
+                        for(var i = 217; i<375;i+=23.0){
+                            rect(i,398,18,31,4); 
+                        }
+                        var thirdRowKeys= ["Z","X","C","V","B","N","M"];
+                            for(var i=0; i<thirdRowKeys.length;i++){
+                                fill(0, 0, 0);
+                                text(thirdRowKeys[i],(22.6*i)+221,419); 
+                            }
+                        //spacebar
+                        fill(255, 255, 255);
+                        rect(239,435,112,27,4);
+                        fill(0, 0, 0);
+                        text("space",275,451);
+                        
+                        //shift/backspace
+                        fill(168, 168, 168);
+                        rect(187,399,24,30,4);
+                        rect(379,399,24,30,4);
+                        stroke(0, 0, 0);
+                            //shift
+                            stroke(245, 245, 245);
+                            line(203,shiftY+10,194,shiftY+10);
+                            line(194,shiftY,194,shiftY+10);
+                            line(203,shiftY,203,shiftY+10);
+                            line(208,shiftY+1,203,shiftY+1);
+                            line(189,shiftY+1,194,shiftY+1);
+                            line(189,shiftY+1,199,shiftY-8);
+                            line(208,shiftY+1,198,shiftY-8);
+                            //backspace
+                            stroke(0, 0, 0);
+                            line(399,410,389,410);
+                            line(399,420,389,420);
+                            line(399,420,399,410);
+                            line(383,415,389,420);
+                            line(383,415,389,410);
+                            textFont(f1,9);
+                            fill(0, 0, 0);
+                            text("X",389,418.3);
+                        noStroke();
+                        //123/return
+                        fill(168, 168, 168);
+                        rect(188,435,44,27,4);
+                        rect(358,435,44,27,4);
+                        fill(0, 0, 0);
+                        textFont(f1,13);
+                        text("123",198,453);
+                        pushMatrix();
+                            rotate(180);
+                            translate(146,92);
+                            stroke(245, 245, 245);
+                            line(203,shiftY+10,194,shiftY+10);
+                            line(194,shiftY,194,shiftY+10);
+                            line(203,shiftY,203,shiftY+10);
+                            line(208,shiftY+1,203,shiftY+148);
+                            line(189,shiftY+1,194,shiftY+1);
+                            line(189,shiftY+1,199,shiftY-8);
+                            line(208,shiftY+1,198,shiftY-8);
+                            popMatrix();
+                        //lower
+                            text("Lower",363,453);
+                    keyboardCode=3;
+                        
+                    };//UpperCase
+                
+                    //topbar text
+                var notesApp= function(){
+                //notes arrow
+                pushMatrix();
+                    noStroke();
+                    fill(255, 167, 59);
+                    rotate(45);
+                    rect(201,-70,13,3);
+                    rotate(90);
+                    rect(-83,-203,16,3);
+                popMatrix();
+                
+                //notes
+                fill(255, 167, 59);
+                textFont(f1, 19);
+                text("Notes",205,102);
+                }; 
+                
+                var notesStartScreen=function(){
+                
+                    fill(255, 255, 255);
+                    rect(183,68,225,399);
+                    keyboard1();
+                    topBar(0,0,0);
+                    notesApp(); 
+                screenStage=5;
+                };
+                
+                    //cursor on screen
+                var cursor1=function(){
+                    fill(0, 0, 0);
+                    rect(cursorX,cursorY,2,19);
+                };
+                
+                    //prints letters typed on screen
+                var letterKeyed=function(let1,num){
+                    textFont(f1,20);
+                    fill(255, 255, 255);
+                    rect(cursorX,cursorY,10,19);
+                    fill(0, 0, 0);
+                    text(let1,cursorX-2,cursorY+13);
+                    cursorX+=num;
+                };
+                
+                var backspace=function(){
+                  cursorX-=10;
+                  fill(255, 255, 255);
+                  rect(cursorX,cursorY-2,10,20);
+                  rect(cursorX+2,cursorY,17,20);
+                };
+        //weather app
+            //to get random city 
+            var city;
+            var determineCity=function(){
+                city=round(random(1,3));//random city's weather forecast
+                return city;
+            };
+        //compass app
+            var point1x = 350;
+            var point1y = 167;
+            
+            var compass = function() {
+        stroke(209, 205, 209);
+        fill(0);
+        ellipse(298,216,90,90);
+        noStroke();
+        fill(33, 33, 33);
+        ellipse(298,216,50,50);
+        stroke(189, 189, 189);
+        line(297,182,297,250);
+        line(331,215,263,215);
+        stroke(171, 171, 171);
+        line(297,150,297,175);
+        line(297,256,297,283);
+        line(366,215,338,215);
+        line(258,215,232,215);
+        fill(232, 232, 232);
+        textFont(f1,15);
+        text("N",292,135);
+        text("W",200,221);
+        text("S",292,309); 
+        text("E",382,221);
+        fill(255,255,255);
+        textSize(30);
+        };
+        
+            var pointer = function() {
+        fill(191, 21, 21);
+        noStroke();
+        triangle(point1x,point1y,point1x-20,point1y+4,point1x-3,point1y+20);    
+        };
+        //clockAPP
+            var clockApp=function(){
+fill(245, 245, 245);
+rect(183,68,225,400);
+//top part
+topBar(0);
+textFont(f1,15);
+text("World Clock",260,107);
+fill(255, 0, 0);
+text("Edit",191,107);
+text("+",392,107);
+fill(255,255,255);
+
+//bottom part
+stroke(232, 232, 232);
+rect(183,432,224,35);
+
+//bars
+noStroke();
+for(var i = 0; i <= 16; i+=5) {
+    var y = i*15;
+    rect(183,y+127,225,70);
+}
+
+textSize(17);
+fill(0, 0, 0);
+text("Shanghai              9:40pm",191,161);
+text("Tokyo                   10:41pm",191,236);
+text("Paris                     3:41pm",191,312);
+text("Toronto                 9.41am",191,386);
+textSize(11);
+text("Tomorrow, 12 hours ahead",191,180);
+text("Tomorrow,13 hours ahead",191,257);
+text("Tomorrow,6 hours ahead", 191,330);
+text("Tuesday, June 13th,2016 ", 191,404);
+};
+
+        
+//code interaction
+
+        MasterInstructions();
+        screenStage=1;
+        
+        
+        mouseClicked=function(){
+        //homebutton
+                if(mouseX>17 && mouseX<176 && mouseY>340 && mouseY<385 && screenStage===1){
+                    phoneStartScreen();
+                }
+            //home button
+                if (mouseX<320 && mouseX>280 && mouseY>480 && mouseY<520 && screenStage!==2 ){
+                    homeScreen();
+                    cursorX=199;
+                    cursorY=116;
+                    playSound(getSound("rpg/metal-clink")); 
+                }
+            // to get to homeScreen when in the messaging app
+                if  (mouseX>371 && mouseX<414 && mouseY>512 && mouseY<550 && screenStage===3){
+                   screenStage=2;
+                   background(122, 122, 122);
+                   phoneBody(0,0);
+                   homeScreen();
+                   playSound(getSound("rpg/metal-clink")); 
+                }
+            //homeScreen(get to other apps)
+                if (screenStage===2){
+                    //message icon
+                        if (mouseX>200 && mouseX<240 && mouseY>91 && mouseY<134){
+                            screenStage=3;
+                            }
+                    //notes icon
+                        if(mouseX>200 && mouseX<240 && mouseY>220 && mouseY<260){
+                            notesStartScreen();
+                            }
+                    //paint App
+                        if (mouseX>256 && mouseX<300 && mouseY>93 && mouseY<134){
+                            screenStage=4;
+                        }
+                    //weather app
+                        if(mouseX>200 && mouseX<240 && mouseY>155 && mouseY<195){
+                            
+                            screenStage=6;
+                        }
+                    //compas app
+                        if(mouseX>200 && mouseX<240 && mouseY>351 && mouseY<390){
+                            screenStage=8;   
+                        }
+                    //clock Icon
+                        if(mouseX>258 && mouseX<298 && mouseY>160 && mouseY<198){
+                            screenStage=9;   
+                        }
+                }
+                
+                
+        //message screen
+            if (screenStage===3){
+                background(122, 122, 122);
+                phoneBody(91,31);
+                messageScreen();
+                screenDivider();
+                        
+            
+                //option 1
+                    if (mouseX>9 && mouseX<243 && mouseY>18 && mouseY<195){
+                        option1=true;
+                    }
+                //options2
+                    if (mouseX>9 && mouseX<243 && mouseY>205 && mouseY<395){
+                        option2=true;
+                    }
+                //option 3
+                    if (mouseX>9 && mouseX<243 && mouseY>405 && mouseY<595){
+                        option3=true;
+                    }
+                    
+                    
+            //optionState1
+                if (messageCase===1){
+                    messageBubble(40,60,151,3.3,"where are you? Are you okay?"); 
+                }
+                if(messageCase===1 && option1===true){
+                    reset();
+                    case1=true;
+                    messageCase=2;
+                }
+                
+            //optionState2
+                if (messageCase===2){
+                        messageBubble(30,60,94,2.2,"thank God!!!");
+                        messageBubble(30,260,133,3.3,"I was so worried about you!");
+                        messageBubble(30,460,116,3.4,"You are really okay?!?");
+                        
+                    if( option1===true){
+                        reset();
+                        case2=true;
+                        messageCase=3;
+                    }
+                    if(option2===true){
+                        reset();
+                        case3=true;
+                        messageCase=3;
+                    }
+                    if(option3===true){
+                        reset();
+                        case4=true;
+                        messageCase=3;
+                    }
+                }//end of messageStage2
+                
+            //optionState3
+                if(messageCase===3){
+                    messageBubble(30,60,148,6.9,"Do you live under a rock? the plane you were supposed to be on was hijacked and crashed");
+                    if(option1===true){
+                        reset();
+                        case5=true;
+                        messageCase=4;
+                    }
+                    
+                }//end of messageCase3
+                
+            //messageCase4
+                if(messageCase===4){
+                    messageBubble(58,28,148,10.1,"Look I get that you are a reporter and all, having to be super flexable. BUT SERIOUSLY NOW? LET SOMEONE ELSE DO YOUR JOB RIGHT NOW!");
+                    messageBubble(56,242,147,5.7,"You should at least give Mom and Dad a phone call they are worried sick");
+                    messageBubble(56,419,147,6.8,"You have to be joking. Get home now or im going to sell all your stuff on Craigslist");
+                    if(option1===true){
+                        reset();
+                        case6=true;
+                        messageCase=5;
+                    }
+                    if (option2===true){
+                        reset();
+                        case7=true;
+                        messageCase=5;
+                    }
+                    if(option3===true){
+                        reset();
+                        case8=true;
+                        messageCase=5;
+                    }
+                }//end of Case4
+                
+            //message Case5
+                if(messageCase===5){
+                    messageBubble(54,26,154,9.4,"We are all tired of you always being at work, we haven't even seen you since you got that reporter job over a year ago");
+                    if(option1===true){
+                        reset();
+                        case9=true;
+                        messageCase=6;
+                    }
+                }//end of messageCase5
+            
+            //messageCase 6
+                if(messageCase===6){
+                    messageBubble(54,23,156,11.3,"It's this kind  of behaviour that has followed you your entire life. improving yourself with no regard for others.YOUR OWN FATHER IS DYING AND YOU WON'T EVEN VISIT HIM");
+                     messageBubble(54,212,156,11.3,"But with dad almost on his death-bed you need to move here with mom, since i have to go to uni in the fall and mom is going to be broken once dad dies, please.");  
+                     if(option1===true){
+                        reset();
+                        case10=true;
+                     }
+                     if(option2===true){
+                        reset();
+                        case11=true;
+                     }
+                }//end of messagecase6
+            
+        //moving up
+            if(case1===true){
+                messageHeight-=0;   
+            }
+            if(case2===true){
+                messageHeight-=140;
+            }
+            if(case3===true){
+                messageHeight-=142;  
+            }
+            if(case4===true){
+                messageHeight-=136;
+            }
+            if(case5===true){
+                messageHeight-=50;
+            }
+                //paul was here
+            if(case6===true){
+                messageHeight-=78;   
+            }
+            if(case7===true){
+                messageHeight-=40;
+            }
+            if(case8===true){
+                messageHeight-=60;
+            }
+            if(case9===true){
+                messageHeight-=20;   
+            }
+            if(case10===true){
+             messageHeight-=30;   
+            }
+            if(case11===true){
+                messageHeight-=105;   
+            }
+            
+            }//end of screenStage3
+        //paint
+                //initiating paint
+            if(screenStage===4){
+                 fill(255, 255, 255);
+                rect(183,82,225,365);
+                screenStage=7;
+            }//end of screenStage4
+                //paint app
+            if(screenStage===7){
+                noStroke();
+                
+                fill(0, 0, 0);
+                colourSet();//call colourSet function
+                
+                 if(mouseX>183&&mouseX<211&&mouseY>68&&mouseY<83){//change drawing colour to red
+                    fill(255, 0, 0);
+                }
+                    else if(mouseX>211&&mouseX<239&&mouseY>68&&mouseY<83){//change drawing colour to orange
+                        fill(255, 140, 0);
+                    }
+                    else if(mouseX>239&&mouseX<267&&mouseY>68&&mouseY<83){//change drawing colour to yellow
+                        fill(255, 242, 0);
+                    }
+                    else if(mouseX>267&&mouseX<295&&mouseY>68&&mouseY<83){//change drawing colour to green
+                        fill(94, 255, 0);
+                    }
+                    else if(mouseX>295&&mouseX<323&&mouseY>68&&mouseY<83){//change drawing colour to blue
+                        fill(0, 174, 255);
+                    }
+                    else if(mouseX>327&&mouseX<352&&mouseY>68&&mouseY<83){//change drawing colour to purple
+                        fill(140, 0, 255);
+                    }
+                    else if(mouseX>323&&mouseX<379&&mouseY>68&&mouseY<83){//change drawing colour to pink
+                        fill(255, 173, 202);
+                    }
+                    else if(mouseX>379&&mouseX<408&&mouseY>68&&mouseY<83){//change drawing colour to black
+                        fill(0, 0, 0);
+                    }
+                    
+                    else if(mouseX>183&&mouseX<218&&mouseY>449&&mouseY<469&&Screen===1){//restart drawing
+                        fill(255, 255, 255);
+                        rect(183,82,225,365);
+                    }
+                    else if(mouseX>221&&mouseX<245&&mouseY>449&&mouseY<469){//change shape to triangle
+                        Shape=triangle;
+                    }  
+                    else if(mouseX>245&&mouseX<265&&mouseY>449&&mouseY<469){//change shape to square
+                        Shape=rect;
+                    }
+                    else if(mouseX>265&&mouseX<301&&mouseY>449&&mouseY<469){//change shape to trapezoid
+                        Shape=quad;
+                    }
+                    else if(mouseX>301&&mouseX<320&&mouseY>449&&mouseY<469){//change shape to circle
+                        Shape=ellipse;
+                    }
+                    else if(mouseX>320&&mouseX<340&&mouseY>449&&mouseY<469){//change shape to heart
+                        Shape=text;
+                    }
+                    else if(mouseX>340&&mouseX<356&&mouseY>449&&mouseY<469){//go to insctructions
+                        fill(255, 255, 255);
+                        rect(183,82,225,365);
+                        instructions();
+                        Screen=0;
+                    }  
+                    else if(mouseX>356&&mouseX<407&&mouseY>449&&mouseY<469){//change to random colour
+                        fill(random(300), random(300), random(300));
+                    }
+                    else if(mouseX>384&&mouseX<403&&mouseY>120&&mouseY<135){//exit instructions
+                        fill(255, 255, 255);
+                        rect(183,82,225,365);
+                        Screen=1;
+                    }
+            }//end of screenStage7
+        //weather    
+             if (screenStage===6){//weather app  
+            determineCity();
+                
+        
+            //Toronto weather forecast
+                if (city===1){
+                    noStroke();
+                    background(122, 122, 122);//gray background
+                    phoneBody(0,0);
+                //sky
+                    fill(124, 108, 217);
+                    rect(183,68,225,400);
+                    topBar(214, 214, 214);
+                //CN Tower
+                    fill(48, 28, 48);
+                    quad(275,240,288,240,296,468,267,468);
+                    ellipse(281.5,245,35,14);
+                    quad(263,231,300,231,298.5,241,264.5,241);
+                    quad(270,225,293,225,299,231,262.5,231);
+                    quad(267,219,296,219,295,230,268,230);
+                    rect(274,211,15,9);
+                    quad(279,134,284,134,285,211,277,211);
+                    ellipse(281.5,164,12,8);
+                    quad(280,122,283,122,283.3,134,279.7,134);
+                    strokeWeight(2);
+                    stroke(0, 0, 0);
+                    line(281.5,102,281.5,125);
+                //buildings
+                    noStroke();
+                    quad(239,370,279,360,284,468,239,468);
+                    ellipse(232,430,97,28);
+                    rect(183,430,56,38);
+                    rect(294,408,8,60);
+                    rect(302,385,21,83);
+                    rect(323,392,45,76);
+                    rect(368,420,5,48);
+                    rect(373,450,6,18);
+                    rect(379,430,29,38);
+                //Weather forecast
+                    fill(245, 245, 245);
+                    textSize(22);
+                    var f = createFont("tahoma");
+                    textFont(f);
+                    text("Clear sky",251,136);
+                    textSize(14);
+                    text("Toronto, Canada",244,159);
+                    textSize(58);
+                    text("20°",255,220);
+                    textSize(13);
+                    text("WED",204,410);
+                    text("THU",259,410);
+                    text("FRI",315,410);
+                    text("SAT",362,410);
+                    text("22°",209,440);
+                    text("21°",264,440);
+                    text("19°",315,440);
+                    text("23°",365,440);
+                }//end of Toronto forecast
+            
+            //Pohkara weather forecast
+                if (city===2){
+                    noStroke();
+                    background(122, 122, 122);//gray background
+                    phoneBody(0,0);
+                    
+                //sky
+                    fill(255, 189, 189);
+                    rect(183,68,225,400);
+                    topBar(87, 87, 87);
+                //Mountains
+                    fill(211, 127, 219);
+                    noStroke();
+                    triangle(267,468,352,320,408,468);
+                    fill(179, 105, 164);
+                    triangle(183,400,273,400,220,320);
+                    quad(183,400,273,400,316,468,183,468);
+                    fill(150, 52, 150);
+                    triangle(340,375,408,375,380,305);
+                    rect(350,375,58,93);
+                    fill(77, 32, 76);
+                    triangle(183,468,290,250,408,468);
+                //Weather forecast
+                    fill(255, 255, 255);
+                    textSize(20);
+                    var f = createFont("tahoma");
+                    textFont(f);
+                    text("Windy",270,136);
+                    textSize(14);
+                    text("Pohkara, Nepal",251,159);
+                    textSize(58);
+                    text("-20°",243,220);
+                    textSize(13);
+                    text("WED",204,410);
+                    text("THU",259,410);
+                    text("FRI",315,410);
+                    text("SAT",362,410);
+                    text("-18°",205,440);
+                    text("-21°",259,440);
+                    text("-19°",313,440);
+                    text("-23°",361,440);
+                }//end of Pohkara forecast
+            
+            //Barcelona weather forecast    
+                if (city===3){
+                    noStroke();
+                    background(122, 122, 122);//gray background
+                    phoneBody(0,0);
+                //sky
+                    fill(153, 199, 255);
+                    rect(183,68,225,400);
+                    topBar(87, 87, 87);
+                //clouds
+                    noStroke();
+                    fill(242, 245, 255);
+                    ellipse(220,190,58,30);
+                    ellipse(217,190,30,40);
+                    ellipse(229,190,27,31);
+                    ellipse(359,110,55,26);
+                    ellipse(348,110,21,30);
+                    ellipse(371,110,21,31);
+                    ellipse(359,110,25,35);
+                //water
+                    fill(0, 137, 201);
+                    rect(183,390,225,78);
+                //sun
+                    fill(255, 242, 0);
+                    ellipse(235,120,50,50);
+                //sailboat
+                    fill(255, 255, 255);
+                    triangle(325,378,350,320,380,378);
+                    strokeWeight(3);
+                    stroke(130, 86, 48);
+                    line(350,380,350,320);
+                    noStroke();
+                    fill(255, 0, 0);
+                    quad(320,382,382,382,380,390,322,390);
+                //weather forecast
+                    fill(255, 255, 255);
+                    textSize(20);
+                    var f = createFont("tahoma");
+                    textFont(f);
+                    text("Sunny",270,136);
+                    textSize(14);
+                    text("Barcelona, Spain",248,159);
+                    textSize(58);
+                    text("30°",255,220);
+                    textSize(13);
+                    text("WED",205,410);
+                    text("THU",260,410);
+                    text("FRI",315,410);
+                    text("SAT",362,410);
+                    text("28°",209,440);
+                    text("29°",263,440);
+                    text("31°",315,440);
+                    text("27°",363,440);
+                }//end of Barcelona forecast
+                
+        }//end of screenStage6
+        //notesScreen   
+            if(screenStage===5){
+                //Changing Keybords
+                    if (mouseX>190 && mouseX<230 && mouseY>430 && mouseY<460 && keyboardCode===1){
+                        keyboard2();
+                    }
+                    if (mouseX>360 && mouseX<400 && mouseY>430 && mouseY<460 && keyboardCode===2){
+                            keyboard1();
+                    }
+                    if (mouseX>188 && mouseX<211 && mouseY>400 && mouseY<427 && keyboardCode===1){
+                            keyboard3();   
+                    }
+                    if (mouseX>350 && mouseX<402 && mouseY>437 && mouseY<460 && keyboardCode===3){
+                        keyboard1();
+                    }
+                    if (mouseX>188 && mouseX<232 && mouseY>437 && mouseY<460 && keyboardCode===3){
+                        keyboard2();
+                    }
+                //key presses
+        //lower case keybord
+            if(keyboardCode===1){
+                //q
+                    if(mouseX>187 && mouseX<202 && mouseY>324 && mouseY<354) {
+                        letterKeyed("q",10.5);
+                    }
+                //w
+                    if(mouseX>209 && mouseX<226 && mouseY>324 && mouseY<354) {
+                        letterKeyed("w",13.7);
+                    }
+                //e
+                    if(mouseX>231 && mouseX<247 && mouseY>324 && mouseY<354) {
+                        letterKeyed("e",11);
+                    }
+                //r
+                    if(mouseX>253 && mouseX<268 && mouseY>324 && mouseY<354) {
+                        letterKeyed("r",7);
+                    }
+                //t
+                    if(mouseX>275 && mouseX<291 && mouseY>324 && mouseY<354) {
+                        letterKeyed("t",6);    
+                    }
+                //y
+                    if(mouseX>297 && mouseX<313 && mouseY>324 && mouseY<354) {
+                        letterKeyed("y",10);
+                    }
+                //u
+                    if(mouseX>319 && mouseX<335 && mouseY>324 && mouseY<354) {
+                        letterKeyed("u",11);
+                    }
+                //i
+                    if(mouseX>341 && mouseX<357 && mouseY>324 && mouseY<354) {
+                        letterKeyed("i",4);
+                    }
+                //o
+                    if(mouseX>363 && mouseX<379 && mouseY>324 && mouseY<354) {
+                        letterKeyed("o",10.5);
+                    }
+                //p
+                    if(mouseX>385 && mouseX<400 && mouseY>324 && mouseY<354) {
+                        letterKeyed("p",11);
+                    }
+                //a
+                    if(mouseX>194 && mouseX<211 && mouseY>361 && mouseY<391) {
+                        letterKeyed("a",11);
+                    }
+                //s
+                    if(mouseX>216 && mouseX<234 && mouseY>361 && mouseY<391) {
+                        letterKeyed("s",10); 
+                    }
+                //d
+                    if(mouseX>240 && mouseX<257 && mouseY>361 && mouseY<391) {
+                        letterKeyed("d",11); 
+                    }
+                //f
+                    if(mouseX>263 && mouseX<280 && mouseY>361 && mouseY<391) {
+                        letterKeyed("f",7);
+                    }
+                //g
+                    if(mouseX>286 && mouseX<302 && mouseY>361 && mouseY<391) {
+                        letterKeyed("g",10);
+                    }
+                //h
+                    if(mouseX>309 && mouseX<325 && mouseY>361 && mouseY<391) {
+                        letterKeyed("h",10);
+                    }
+                //j
+                    if(mouseX>332 && mouseX<349 && mouseY>361 && mouseY<391) {
+                        letterKeyed("j",5);
+                    }
+                //k
+                    if(mouseX>355 && mouseX<372 && mouseY>361 && mouseY<391) {
+                        letterKeyed("k",10);
+                    }
+                //l
+                    if(mouseX>378 && mouseX<394 && mouseY>361 && mouseY<391) {
+                        letterKeyed("l",5);
+                    }
+                //z
+                    if(mouseX>216 && mouseX<234 && mouseY>398 && mouseY<427) {
+                        letterKeyed("z",10);
+                    }
+                //x
+                    if(mouseX>241 && mouseX<257 && mouseY>398 && mouseY<427) {
+                        letterKeyed("x",10);
+                    }
+                //c
+                    if(mouseX>263 && mouseX<280 && mouseY>398 && mouseY<427) {
+                        letterKeyed("c",10);
+                    }
+                //v
+                    if(mouseX>286 && mouseX<303 && mouseY>398 && mouseY<427) {
+                        letterKeyed("v",10);
+                    }
+                //b
+                    if(mouseX>310 && mouseX<326 && mouseY>398 && mouseY<427) {
+                        letterKeyed("b",10);
+                    }
+                //n
+                    if(mouseX>332 && mouseX<349 && mouseY>398 && mouseY<427) {
+                        letterKeyed("n",10.3); 
+                    }
+                //m
+                    if(mouseX>355 && mouseX<372 && mouseY>400 && mouseY<427) {
+                        letterKeyed("m",16);  
+                    }
+                //space
+                    if(mouseX>238 && mouseX<351 && mouseY>438 && mouseY<462){
+                        letterKeyed(" ",10);   
+                    }
+                // backspace
+                    if(mouseX>380 && mouseX<400 && mouseY>400 && mouseY<428){
+                        backspace();
+                    }
+            }//end of keybord 1
+        //numeric
+            if(keyboardCode===2){
+               noStroke();
+                //1
+                    if(mouseX>187 && mouseX<202 && mouseY>324 && mouseY<354) {
+                        letterKeyed("1",10.5);
+                    }
+                //2
+                    if(mouseX>209 && mouseX<226 && mouseY>324 && mouseY<354) {
+                        letterKeyed("2",10.7);
+                    }
+                //3
+                    if(mouseX>231 && mouseX<247 && mouseY>324 && mouseY<354) {
+                        letterKeyed("3",11);
+                    }
+                //4
+                    if(mouseX>253 && mouseX<268 && mouseY>324 && mouseY<354) {
+                        letterKeyed("4",11);
+                    }
+                //5
+                    if(mouseX>275 && mouseX<291 && mouseY>324 && mouseY<354) {
+                        letterKeyed("5",10);    
+                    }
+                //6
+                    if(mouseX>297 && mouseX<313 && mouseY>324 && mouseY<354) {
+                        letterKeyed("6",11);
+                    }
+                //7
+                    if(mouseX>319 && mouseX<335 && mouseY>324 && mouseY<354) {
+                        letterKeyed("7",11);
+                    }
+                //8
+                    if(mouseX>341 && mouseX<357 && mouseY>324 && mouseY<354) {
+                        letterKeyed("8",10);
+                    }
+                //9
+                    if(mouseX>363 && mouseX<379 && mouseY>324 && mouseY<354) {
+                        letterKeyed("9",10.5);
+                    }
+                //0
+                    if(mouseX>385 && mouseX<400 && mouseY>324 && mouseY<354) {
+                        letterKeyed("0",11);
+                    }
+                //-
+                    if(mouseX>187 && mouseX<203 && mouseY>361 && mouseY<391) {
+                        letterKeyed("-",7);
+                    }
+                // /
+                    if(mouseX>209 && mouseX<225 && mouseY>361 && mouseY<391) {
+                        letterKeyed("/",5); 
+                    }
+                //:
+                    if(mouseX>232 && mouseX<247 && mouseY>361 && mouseY<391) {
+                        letterKeyed(":",5); 
+                    }
+                //;
+                    if(mouseX>254 && mouseX<269 && mouseY>361 && mouseY<391) {
+                        letterKeyed(";",7);
+                    }
+                //(
+                    if(mouseX>276 && mouseX<291 && mouseY>361 && mouseY<391) {
+                        letterKeyed("(",10);
+                    }
+                //)
+                    if(mouseX>298 && mouseX<312 && mouseY>361 && mouseY<391) {
+                        letterKeyed(")",10);
+                    }
+                //$
+                    if(mouseX>320 && mouseX<335 && mouseY>361 && mouseY<391) {
+                        letterKeyed("$",11);
+                    }
+                //&
+                    if(mouseX>340 && mouseX<356 && mouseY>361 && mouseY<391) {
+                       letterKeyed("&",12);
+                    }
+                //@
+                    if(mouseX>363 && mouseX<379 && mouseY>361 && mouseY<391) {
+                        letterKeyed("@  ",20);
+                    }
+                //"
+                    if(mouseX>385 && mouseX<400 && mouseY>361 && mouseY<391) {
+                        letterKeyed('"',10);
+                    }
+                //.
+                    if(mouseX>214 && mouseX<240 && mouseY>403 && mouseY<428) {
+                        letterKeyed(".",10);
+                    }
+                //,
+                    if(mouseX>248 && mouseX<274 && mouseY>403 && mouseY<428) {
+                        letterKeyed(",",10);
+                    }
+                //?
+                    if(mouseX>284 && mouseX<306 && mouseY>403 && mouseY<428) {
+                        letterKeyed("?",10);
+                    }
+                //!
+                    if(mouseX>314 && mouseX<340 && mouseY>403 && mouseY<428) {
+                        letterKeyed("!",5);
+                    }
+                //'
+                    if(mouseX>348 && mouseX<374 && mouseY>403 && mouseY<428) {
+                        letterKeyed("'",5);
+                    }
+                //space
+                    if(mouseX>238 && mouseX<351 && mouseY>438 && mouseY<462){
+                        letterKeyed(" ",10);   
+                    }
+                // backspace
+                    if(mouseX>380 && mouseX<400 && mouseY>400 && mouseY<428){
+                        backspace();
+                    }
+            }//end of keyboard2 keys
+        //uper Case
+            if(keyboardCode===3){
+                //Q
+                    if(mouseX>187 && mouseX<202 && mouseY>324 && mouseY<354) {
+                        letterKeyed("Q",13.7);
+                    }
+                //W
+                    if(mouseX>209 && mouseX<226 && mouseY>324 && mouseY<354) {
+                        letterKeyed("W",18.8);
+                    }
+                //E
+                    if(mouseX>231 && mouseX<247 && mouseY>324 && mouseY<354) {
+                        letterKeyed("E",12);
+                    }
+                //R
+                    if(mouseX>253 && mouseX<268 && mouseY>324 && mouseY<354) {
+                        letterKeyed("R",14);
+                    }
+                //T
+                    if(mouseX>275 && mouseX<291 && mouseY>324 && mouseY<354) {
+                        letterKeyed("T",13);    
+                    }
+                //Y
+                    if(mouseX>297 && mouseX<313 && mouseY>324 && mouseY<354) {
+                        letterKeyed("Y",12);
+                    }
+                //U
+                    if(mouseX>319 && mouseX<335 && mouseY>324 && mouseY<354) {
+                        letterKeyed("U",12);
+                    }
+                //I
+                    if(mouseX>341 && mouseX<357 && mouseY>324 && mouseY<354) {
+                        letterKeyed("I",7);
+                    }
+                //O
+                    if(mouseX>363 && mouseX<379 && mouseY>324 && mouseY<354) {
+                        letterKeyed("O",13.9);
+                    }
+                //P
+                    if(mouseX>385 && mouseX<400 && mouseY>324 && mouseY<354) {
+                        letterKeyed("P",12);
+                    }
+                //A
+                    if(mouseX>194 && mouseX<211 && mouseY>361 && mouseY<391) {
+                        letterKeyed("A",12);
+                    }
+                //S
+                    if(mouseX>216 && mouseX<234 && mouseY>361 && mouseY<391) {
+                        letterKeyed("S",12); 
+                    }
+                //D
+                    if(mouseX>240 && mouseX<257 && mouseY>361 && mouseY<391) {
+                        letterKeyed("D",12); 
+                    }
+                //F
+                    if(mouseX>263 && mouseX<280 && mouseY>361 && mouseY<391) {
+                        letterKeyed("F",11);
+                    }
+                //G
+                    if(mouseX>286 && mouseX<302 && mouseY>361 && mouseY<391) {
+                        letterKeyed("G",15);
+                    }
+                //H
+                    if(mouseX>309 && mouseX<325 && mouseY>361 && mouseY<391) {
+                        letterKeyed("H",14);
+                    }
+                //J
+                    if(mouseX>332 && mouseX<349 && mouseY>361 && mouseY<391) {
+                        letterKeyed("J",10);
+                    }
+                //K
+                    if(mouseX>355 && mouseX<372 && mouseY>361 && mouseY<391) {
+                        letterKeyed("K",14);
+                    }
+                //L
+                    if(mouseX>378 && mouseX<394 && mouseY>361 && mouseY<391) {
+                        letterKeyed("L",10);
+                    }
+                //Z
+                    if(mouseX>216 && mouseX<234 && mouseY>398 && mouseY<427) {
+                        letterKeyed("Z",13);
+                    }
+                //X
+                    if(mouseX>241 && mouseX<257 && mouseY>398 && mouseY<427) {
+                        letterKeyed("X",13);
+                    }
+                //C
+                    if(mouseX>263 && mouseX<280 && mouseY>398 && mouseY<427) {
+                        letterKeyed("C",14);
+                    }
+                //V
+                    if(mouseX>286 && mouseX<303 && mouseY>398 && mouseY<427) {
+                        letterKeyed("V",15);
+                    }
+                //B
+                    if(mouseX>310 && mouseX<326 && mouseY>398 && mouseY<427) {
+                        letterKeyed("B",13);
+                    }
+                //N
+                    if(mouseX>332 && mouseX<349 && mouseY>398 && mouseY<427) {
+                        letterKeyed("N",13.1); 
+                    }
+                //M
+                    if(mouseX>355 && mouseX<372 && mouseY>400 && mouseY<427) {
+                        letterKeyed("M",16);  
+                    }
+                //space
+                    if(mouseX>238 && mouseX<351 && mouseY>438 && mouseY<462){
+                        letterKeyed(" ",10);   
+                    }
+                // backspace
+                    if(mouseX>380 && mouseX<400 && mouseY>400 && mouseY<428){
+                        backspace();
+                    }
+            }//end of keybord 3
+            
+            cursor1();  
+            
+                //moving to next line
+                if(cursorX>388){
+                    fill(255, 255, 255);
+                    rect(cursorX,cursorY,5,20);
+                    cursorX=199;
+                    cursorY+=20;
+                }
+                //not going past the screen
+                if(cursorX<199 && cursorY<119){
+                  cursorX=200;  
+                }
+                //backspace to past line
+                if(cursorX<199 && cursorY>130){
+                    fill(255, 255, 255);
+                    rect(cursorX,cursorY,5,20);
+                    cursorX=388;
+                    cursorY-=20;
+                }
+            }//end of ScreenStage===5
+        //compas
+            if(screenStage===8){
+                
+                noStroke();
+                fill(0, 0, 0);
+                rect(183,68,225,400);
+                topBar(214, 214, 214);
+                
+                compass();
+                pointer();
+                fill(255,255,255);
+                textSize(53);
+                text("30\xB0",202,405);
+                textSize(12);
+                text("NE",290,375);
+                text("Mississauga",290,390);
+                text("ON",290,405);
+            }//end of screenStage8
+        //clock
+            if(screenStage===9){
+                clockApp();
+            }
+
+            
+            
+        };//end of mouse Clicked  
+        
+        
+                
+            
+                draw= function() {
+                    //drawing items in Paint
+                    if(screenStage===7){
+                noStroke();
+            
+                    //draw circles
+                        if(mouseIsPressed&&mouseX>187&&mouseX<403&&mouseY>87&&mouseY<444 && Shape===ellipse&&Screen===1){
+                            frameRate(60);
+                            Shape(mouseX, mouseY, 7, 7);
+                        }
+                    
+                    //draw triangles
+                        else if(mouseIsPressed&&mouseX>193&&mouseX<398&&mouseY>83&&mouseY<439 && Shape===triangle&&Screen===1){
+                            Shape(mouseX,mouseY,mouseX-10,mouseY+10,mouseX+10,mouseY+10);
+                        }
+                    
+                    //draw sqaures
+                        else if(mouseIsPressed&&mouseX>183&&mouseX<398&&mouseY>83&&mouseY<439 && Shape===rect&&Screen===1){
+                            Shape(mouseX,mouseY,10,10);
+                        }
+                    
+                    //draw trapezoids
+                        else if(mouseIsPressed&&mouseX>183&&mouseX<388&&mouseY>93&&mouseY<449 && Shape===quad&&Screen===1){
+                            Shape(mouseX,mouseY,mouseX+5,mouseY-10,mouseX+15,mouseY-10,mouseX+20,mouseY);
+                        }
+                    
+                    //draw hearts
+                        else if(mouseIsPressed&&mouseX>183&&mouseX<397&&mouseY>93&&mouseY<450 && Shape===text&&Screen===1){
+                            text("♥",mouseX,mouseY);
+                        }
+                    }//end of function to draw images
+                    //scrolling in messages
+                    if(screenStage===3){
+                        if (keyIsPressed && keyCode === UP) {
+                            messageHeight-=2;
+                        } 
+                        if (keyIsPressed && keyCode === DOWN) {
+                            messageHeight+=2;
+                        }
+                        if (keyIsPressed && keyCode === LEFT) {
+                            messageHeight-=0;
+                        }
+                        
+                    }//end of scrolling
+                    //drawing messages
+                    if(screenStage===3){
+                
+                
+                
+                phoneBody(91,31);
+                messageScreen();
+                if(case1===true){
+                    block1(0,0);
+                }
+                if(case2===true){
+                    block2(141,182);
+                }
+                if(case3===true){
+                    block3(140,196);
+                }
+                if(case4===true){
+                    block4(139,195);
+                }
+                if(case5===true){
+                    block5(281,384);
+                }
+                if(case6===true){
+                    block6(464,607);   
+                }
+                if(case7===true){
+                    block7(474,565);   
+                }
+                if(case8===true){
+                    block8(473,578);   
+                }
+                if(case9===true){
+                    block9(737,863);
+                }
+                if(case10===true){
+                    block10(1007,1164);
+                }
+                if(case11===true){
+                    block11(1039,1204);   
+                }
+                
+                messageScreenRAW();
+                fill(122, 122, 122);
+                rect(242,0,300,34);
+                rect(209,3,233,33);
+                rect(475,3,233,33);
+                rect(242,546,300,39);
+                 //body
+                    fill(26, 26, 26);
+                    rect(264,36,245,60,30);
+                    rect(264,76,245,23);
+                    rect(264,502,245,55,30);
+                    rect(264,498,245,21);
+                    
+                //side buttons
+                    noStroke();
+                    rect(261,116,5,32,2);
+                    rect(261,171,5,20,2);
+                    rect(261,205,5,20,2);
+                    rect(442,34,33,5,2);
+                    
+                 //earpeace
+                    fill(56, 56, 56);
+                    rect(368,72,45,10,40);
+                    fill(117, 117, 117);
+                    rect(371,74,38,6,63);
+                    
+                //camera
+                    fill(49, 53, 71);
+                    ellipse(391,57,10,10);
+                //home button 
+                    fill(46, 46, 46);
+                    ellipse(391,530,43,43);
+                        //square
+                        fill(204, 200, 204);
+                        rect(378,517,26,26,5);
+                        fill(46, 45, 46);
+                        rect(381,520,20,20,1);
+                        
+                fill(122, 122, 122);
+                rect(269,562,235,106);
+                pushMatrix();
+                translate(91,31);
+                topBar(0,0,0);
+                popMatrix();
+                if(mouseX>290 && mouseX<465 && mouseY>117 && mouseY<130 && mouseIsPressed){
+                messageInstructions();
+                
+                   
+            }
+        
+            }//end of message drawing
+                };
